@@ -1,0 +1,108 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800);
+/*Shadow*/
+/* transitions */
+/* Dark transparent bg */
+.ticket {
+  background-color: white;
+  box-shadow: 1px 10px 10px rgba(0, 0, 0, 0.295);
+}
+.ticket-title {
+  margin-bottom: 2px;
+}
+.ticket-contacto {
+  display: flex;
+  justify-content: space-around;
+  font-weight: 600;
+}
+.ticket-reserva span {
+  color: black;
+  font-weight: bold;
+}
+.ticket-bg {
+  background-image: url(../plugins/images/img/9.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 300px;
+  background-color: aliceblue;
+}
+.ticket hr {
+  margin: 0.8rem 0;
+  color: rgb(150, 22, 0);
+  border: none;
+  height: 2px;
+}
+
+.ajustado {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.5px;
+}
+
+.ticket-img {
+  height: 200px;
+  object-fit: contain;
+}
+
+.box-ticket {
+  border-radius: 10px;
+  outline: 7px orange solid;
+}
+
+.ticket-body {
+  padding: 1rem;
+  text-align: center;
+}
+
+.ticket-title {
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.ticket-footer {
+  background-color: rgb(107, 0, 0);
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ticket-footer .content {
+  color: white;
+  font-weight: bold;
+  rotate: -90deg;
+  text-align: center;
+}
+
+.w-70 {
+  width: 70%;
+}
+.w-80 {
+  width: 80%;
+}
+
+.input-group input[type=file] {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.preview img {
+  max-width: 100px;
+  margin: 10px;
+}
+
+.form-group .form-control:hover {
+  box-shadow: 3px 0px 0px orange;
+}
+
+.form-group .form-control:focus {
+  outline: 1px solid rgba(255, 166, 0, 0.726);
+  box-shadow: 0px 0px 10px rgba(255, 68, 0, 0.027);
+}
+
+.active span {
+  color: #4fc3f7;
+  font-weight: bold;
+}

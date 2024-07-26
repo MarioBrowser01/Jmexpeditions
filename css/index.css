@@ -1,0 +1,9 @@
+.ticket-img {
+  height: 200px;
+  object-fit: contain;
+}
+
+.box-ticket {
+  border: 10px orange solid;
+  border-radius: 10px;
+}
