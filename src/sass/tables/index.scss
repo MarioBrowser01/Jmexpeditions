@@ -1,0 +1,7 @@
+/* Asegúrate de que las tablas no se desborden del contenedor */
+@import '../variables';
+
+
+table {
+    max-width: 100%;
+}
