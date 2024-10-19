@@ -102,143 +102,158 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <title>Reservar <?php echo htmlspecialchars($paquete['nombre_paquete']); ?> - JM Expeditions</title>
 
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('<?php echo $URL; ?>/public/images/destinos/<?php echo $url_imagen; ?>');">
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_1.jpg');">
     <div class="overlay"></div>
     <div class="container">
-        <div class="row  js-fullheight align-items-end justify-content-end">
-            <div class="container mt-5 mb-5 pt-5 ftco-animate pb-5">
-                <div class="row">
-                    <!-- Formulario de Reserva -->
-                    <div class="col-md-8 mt-4">
-                        <div class="form-section bg-light p-5 rounded shadow-lg position-relative">
-                            <h2 class="text-center mb-4 font-weight-bold text-primary mt-4">Reserva tu Aventura: <span class="text-warning"><?php echo htmlspecialchars($paquete['nombre_paquete']); ?></span></h2>
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate pb-5 text-center">
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span> <span>Contact us <i class="fa fa-chevron-right"></i></span></p>
+                <h1 class="mb-0 bread">Contact us</h1>
+            </div>
+        </div>
+    </div>
+</section>
 
-                            <!-- Etiqueta de días en la esquina superior derecha -->
-                            <span class="badge badge-danger position-absolute p-2" style="top: 20px; right: 20px;">
-                                Número de días: <strong><?php echo htmlspecialchars($paquete['duracion_paquete']); ?></strong>
-                            </span>
+<section class="ftco-section ftco-no-pb contact-section mb-4">
+    <div class="container">
+        <div class="row d-flex contact-info">
+            <div class="row">
+                <!-- Formulario de Reserva -->
+                <div class="col-md-8 mt-4">
+                    <div class="form-section bg-light p-5 rounded shadow-lg position-relative">
+                        <h2 class="text-center mb-4 font-weight-bold text-primary mt-4">Reserva tu Aventura: <span class="text-warning"><?php echo htmlspecialchars($paquete['nombre_paquete']); ?></span></h2>
 
-                            <!-- Barra de progreso -->
-                            <div class="progress mb-4">
-                                <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                        <!-- Etiqueta de días en la esquina superior derecha -->
+                        <span class="badge badge-danger position-absolute p-2" style="top: 20px; right: 20px;">
+                            Número de días: <strong><?php echo htmlspecialchars($paquete['duracion_paquete']); ?></strong>
+                        </span>
+
+                        <!-- Barra de progreso -->
+                        <div class="progress mb-4">
+                            <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                        </div>
+
+                        <!-- Mensajes de error o éxito -->
+                        <?php if (!empty($error)): ?>
+                            <div class="alert alert-danger text-center"><?php echo htmlspecialchars($error); ?></div>
+                        <?php elseif (!empty($success)): ?>
+                            <div class="alert alert-success text-center"><?php echo htmlspecialchars($success); ?></div>
+                        <?php endif; ?>
+
+                        <!-- Formulario de reserva -->
+                        <form method="post" action="reservar.php?id=<?php echo $id_paquete; ?>" class="animated-form" oninput="updateProgress()">
+                            <!-- Nombre Completo -->
+                            <div class="form-group mb-4">
+                                <label for="nombre" class="font-weight-bold">Nombre Completo:</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control form-control-lg input-friendly" placeholder="Tu nombre completo" required>
                             </div>
 
-                            <!-- Mensajes de error o éxito -->
-                            <?php if (!empty($error)): ?>
-                                <div class="alert alert-danger text-center"><?php echo htmlspecialchars($error); ?></div>
-                            <?php elseif (!empty($success)): ?>
-                                <div class="alert alert-success text-center"><?php echo htmlspecialchars($success); ?></div>
-                            <?php endif; ?>
+                            <!-- Correo Electrónico -->
+                            <div class="form-group mb-4">
+                                <label for="correo" class="font-weight-bold">Correo Electrónico:</label>
+                                <input type="email" id="correo" name="correo" class="form-control form-control-lg input-friendly" placeholder="ejemplo@correo.com" required>
+                            </div>
 
-                            <!-- Formulario de reserva -->
-                            <form method="post" action="reservar.php?id=<?php echo $id_paquete; ?>" class="animated-form" oninput="updateProgress()">
-                                <!-- Nombre Completo -->
-                                <div class="form-group mb-4">
-                                    <label for="nombre" class="font-weight-bold">Nombre Completo:</label>
-                                    <input type="text" id="nombre" name="nombre" class="form-control form-control-lg input-friendly" placeholder="Tu nombre completo" required>
-                                </div>
-
-                                <!-- Correo Electrónico -->
-                                <div class="form-group mb-4">
-                                    <label for="correo" class="font-weight-bold">Correo Electrónico:</label>
-                                    <input type="email" id="correo" name="correo" class="form-control form-control-lg input-friendly" placeholder="ejemplo@correo.com" required>
-                                </div>
-
-                                <!-- Teléfono con Prefijos Internacionales -->
-                                <div class="form-group">
-                                    <label for="telefono" class="font-weight-bold">Teléfono:</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <select id="prefijo" class="custom-select" onchange="updatePrefix()">
-                                                <option value="+51" data-icon="flag-icons/pe.png">🇵🇪 +51</option>
-                                                <option value="+52" data-icon="flag-icons/mx.png">🇲🇽 +52</option>
-                                                <option value="+54" data-icon="flag-icons/ar.png">🇦🇷 +54</option>
-                                                <option value="+1" data-icon="flag-icons/us.png">🇺🇸 +1</option>
-                                                <option value="+34" data-icon="flag-icons/es.png">🇪🇸 +34</option>
-                                                <option value="+57" data-icon="flag-icons/co.png">🇨🇴 +57</option>
-                                                <option value="+593" data-icon="flag-icons/ec.png">🇪🇨 +593</option>
-                                                <option value="+56" data-icon="flag-icons/cl.png">🇨🇱 +56</option>
-                                                <option value="+81" data-icon="flag-icons/jp.png">🇯🇵 +81</option>
-                                                <!-- Agrega más países según sea necesario -->
-                                            </select>
-                                        </div>
-                                        <input type="text" id="telefono" name="telefono" class="form-control form-control-lg" placeholder="Tu número de teléfono" required>
-                                    </div>
+                            <!-- Fila para Fecha y Número de Personas -->
+                            <div class="form-row mb-4">
+                                <!-- Fecha reservada -->
+                                <div class="form-group col-md-6">
+                                    <label for="fecha_viaje" class="font-weight-bold">Fecha de Viaje:</label>
+                                    <input type="date" id="fecha_viaje" name="fecha_viaje" class="form-control form-control-lg" required>
                                 </div>
 
                                 <!-- Número de Personas -->
-                                <div class="form-group mb-4">
+                                <div class="form-group col-md-6">
                                     <label for="personas" class="font-weight-bold">¿Para cuántas personas?</label>
                                     <input type="number" id="personas" name="personas" class="form-control form-control-lg input-friendly" min="1" value="1" required oninput="updateSummary()">
                                 </div>
-
-                                <!-- Botón de Confirmación -->
-                                <button type="submit" class="btn btn-success btn-lg btn-block mt-4 btn-friendly">Confirmar Reserva</button>
-                            </form>
-                        </div>
-                    </div>
-
-
-                    <!-- Aside: Resumen de reserva en tiempo real -->
-                    <div class="col-md-4 mt-4">
-                        <div class="reservation-summary bg-light p-4 rounded shadow-lg">
-                            <h4 class="text-warning text-center mb-4">Resumen de tu Reserva</h4>
-
-                            <hr class="my-md-2">
-
-
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <p class="mb-0"><strong>Paquete:</strong></p>
-                                <p class="text-right mb-0"><?php echo htmlspecialchars($paquete['nombre_paquete']); ?></p>
                             </div>
 
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <p class="mb-0"><strong>Numero de días:</strong></p>
-                                <p class="text-right mb-0"><?php echo htmlspecialchars($paquete['duracion_paquete']); ?></p>
+                            <!-- Teléfono con Prefijos Internacionales -->
+                            <div class="form-group mb-4">
+                                <label for="telefono" class="font-weight-bold">Teléfono:</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <select id="prefijo" class="custom-select" onchange="updatePrefix()">
+                                            <option value="+51" data-icon="flag-icons/pe.png">🇵🇪 +51</option>
+                                            <option value="+52" data-icon="flag-icons/mx.png">🇲🇽 +52</option>
+                                            <option value="+54" data-icon="flag-icons/ar.png">🇦🇷 +54</option>
+                                            <option value="+1" data-icon="flag-icons/us.png">🇺🇸 +1</option>
+                                            <option value="+34" data-icon="flag-icons/es.png">🇪🇸 +34</option>
+                                            <option value="+57" data-icon="flag-icons/co.png">🇨🇴 +57</option>
+                                            <option value="+593" data-icon="flag-icons/ec.png">🇪🇨 +593</option>
+                                            <option value="+56" data-icon="flag-icons/cl.png">🇨🇱 +56</option>
+                                            <option value="+81" data-icon="flag-icons/jp.png">🇯🇵 +81</option>
+                                            <!-- Agrega más países según sea necesario -->
+                                        </select>
+                                    </div>
+                                    <input type="text" id="telefono" name="telefono" class="form-control form-control-lg" placeholder="Tu número de teléfono" required>
+                                </div>
                             </div>
 
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <p class="mb-0"><strong>Personas:</strong></p>
-                                <p class="text-right mb-0"><span id="summary-personas">1</span></p>
-                            </div>
+                            <!-- Botón de Confirmación -->
+                            <button type="submit" class="btn btn-success btn-lg btn-block mt-4 btn-friendly">Confirmar Reserva</button>
+                        </form>
 
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <p class="mb-0"><strong>Precio por persona:</strong></p>
-                                <p class="text-right mb-0"><?php echo number_format($paquete['precio_paquete'], 2); ?> PEN</p>
-                            </div>
-
-                            <hr class="my-3">
-
-                            <div class="d-flex justify-content-between align-items-center text-dark">
-                                <p class="mb-0"><strong>Total:</strong></p>
-                                <p class="text-right mb-0 font-weight-bold "><span id="summary-total"><?php echo number_format($paquete['precio_paquete'], 2); ?></span> PEN</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- <div class="col-md-9 ftco-animate pb-5 text-center">
 
-                <!-- <p class="breadcrumbs">
-                    <span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span>
-                    <span>Tour List <i class="fa fa-chevron-right"></i></span>
-                </p>
-                <h1 class="mb-0 bread">Tours List</h1> -->
-            </div> -->
+
+                <!-- Aside: Resumen de reserva en tiempo real -->
+                <div class="col-md-4 mt-4">
+                    <div class="reservation-summary bg-light p-4 rounded shadow-lg">
+                        <h4 class="text-warning text-center mb-4">Resumen de tu Reserva</h4>
+
+                        <hr class="my-md-2">
+
+
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <p class="mb-0"><strong>Paquete:</strong></p>
+                            <p class="text-right mb-0"><?php echo htmlspecialchars($paquete['nombre_paquete']); ?></p>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <p class="mb-0"><strong>Numero de días:</strong></p>
+                            <p class="text-right mb-0"><?php echo htmlspecialchars($paquete['duracion_paquete']); ?></p>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <p class="mb-0"><strong>Personas:</strong></p>
+                            <p class="text-right mb-0"><span id="summary-personas">1</span></p>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <p class="mb-0"><strong>Precio por persona:</strong></p>
+                            <p class="text-right mb-0"><?php echo number_format($paquete['precio_paquete'], 2); ?> PEN</p>
+                        </div>
+
+                        <hr class="my-3">
+
+                        <div class="d-flex justify-content-between align-items-center text-dark">
+                            <p class="mb-0"><strong>Total:</strong></p>
+                            <p class="text-right mb-0 font-weight-bold "><span id="summary-total"><?php echo number_format($paquete['precio_paquete'], 2); ?></span> PEN</p>
+                        </div>
+                    </div>
+                    <!-- Ticket de reserva simulado debajo del detalle de reserva -->
+
+
+                    <!-- FIN DE TICKET -->
+                </div>
+
+
+            </div>
         </div>
     </div>
-
 </section>
+
+
+
 
 <script>
     $('#image-slider').carousel({
         interval: 1500 // Cambiar cada 1.5 segundos
     });
 </script>
-
-
-
-
 
 
 <script>
@@ -284,10 +299,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         document.getElementById('summary-personas').textContent = personas;
         document.getElementById('summary-total').textContent = total.toFixed(2);
 
+
+        document.getElementById('Ticket-personas').textContent = personas;
+        document.getElementById('Ticket-total').textContent = total.toFixed(2);
+
         const totalElement = document.getElementById('summary-total');
         totalElement.classList.add('flash');
         setTimeout(() => totalElement.classList.remove('flash'), 500);
     }
+
+    document.getElementById('fecha_viaje').addEventListener('change', function() {
+        // Obtener la fecha seleccionada
+        var fechaSeleccionada = this.value;
+
+        // Establecer la fecha seleccionada en otro campo
+        document.getElementById('fechaTicket').textContent = fechaSeleccionada;
+
+        // Puedes realizar cualquier otra acción aquí
+    });
 
     function updateProgress() {
         const nombre = document.getElementById('nombre').value;
@@ -424,27 +453,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     /* Inicio-Carrousel */
-    .hero-wrap {
-        position: relative;
-        overflow: hidden;
-        /* Evitar que el contenido se desborde */
-        height: 100vh;
-        /* Altura de la sección */
-        background-size: cover;
-        /* Ajustar la imagen de fondo */
-        background-position: center;
-        /* Centrar la imagen */
-    }
 
-    .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        /* Para un overlay oscuro */
-    }
+
+
 
 
     /* Fin-Carrousel */

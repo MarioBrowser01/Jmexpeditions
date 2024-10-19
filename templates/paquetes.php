@@ -247,9 +247,10 @@ $itinerarios_datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="text p-4">
                                     <span class="days"><?php echo $duracion_paquete; ?> Days Tour</span>
 
-                                    <h3><a href="detalle_paquete.php?id=<?php echo $itinerario['id_paquete']; ?>"><?php echo htmlspecialchars($itinerario['nombre_paquete']); ?></a></h3>
+                                    <h3><a href="detalle_paquete.php?id=<?php echo $itinerario['id_paquete']; ?>" class="text-decoration-none"><?php echo htmlspecialchars($itinerario['nombre_paquete']); ?></a></h3>
 
-                                    <p class="location"><span class="fa fa-map-marker"></span> Perú, <?php echo htmlspecialchars($itinerario['nombre_departamento']); ?>, <?php echo htmlspecialchars($itinerario['nombre_provincia']); ?></p>
+                                    <p class="location"><i class="fas fa-map-marker-alt"></i>
+                                    Perú, <?php echo htmlspecialchars($itinerario['nombre_departamento']); ?>, <?php echo htmlspecialchars($itinerario['nombre_provincia']); ?></p>
 
                                     <ul>
                                         <?php if ($noche_paquete > 0): ?>
@@ -297,20 +298,7 @@ $itinerarios_datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-<section class="ftco-intro ftco-section ftco-no-pt">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 text-center">
-                <div class="img" style="background-image: url(images/bg_2.jpg);">
-                    <div class="overlay"></div>
-                    <h2>We Are Pacific A Travel Agency</h2>
-                    <p>We can manage your dream building A small river named Duden flows by their place</p>
-                    <p class="mb-0"><a href="#" class="btn btn-primary px-4 py-3">Ask For A Quote</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const departamentoSelect = document.getElementById('departamento');
