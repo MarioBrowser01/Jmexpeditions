@@ -1,4 +1,529 @@
-.bg-img{
-    background-size: cover !important;
-    background-position: center;
+:root {
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --primario: #0056b3;
+    --azul-opaco: #0056b3;
+    --azul-claro: #007bff;
+    --orange-claro: #ffc107;
 }
+
+.video-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Ocupa toda la altura del viewport */
+    overflow: hidden;
+}
+
+/* Video estirado a cubrir toda la sección */
+.video-wrapper video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+/* Control de sonido centrado */
+.video-controls {
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    z-index: 10;
+    opacity: 1;
+}
+
+.mute-btn {
+    opacity: 0.1;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    padding: 10px 20px;
+    color: white;
+    padding: 20px;
+}
+
+.mute-btn:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: black;
+    transition: background-color 0.3s ease;
+}
+
+/*BOTON DE INICIO (VER DESTINOS----------------)*/
+.btn-flight {
+    position: relative;
+    background-color: #ffcc00; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    padding: 15px 40px; /* Espaciado interno */
+    font-size: 1.2rem; /* Tamaño de fuente */
+    display: inline-flex; /* Flexbox para alineación */
+    justify-content: space-between; /* Espaciado entre icono y texto */
+    align-items: center; /* Centra verticalmente el contenido */
+    overflow: hidden; /* Oculta el contenido que se desborda */
+    transition: background-color 0.5s ease; /* Transición de fondo */
+    width: auto; /* Ancho automático */
+}
+
+@media (max-width: 991.98px) {
+    .btn-flight {
+        font-size: 1rem; /* Tamaño de fuente menor en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .btn-flight {
+        font-size: 1rem; /* Tamaño de fuente en pantallas más pequeñas */
+        margin: auto; /* Centra el botón */
+    }
+}
+
+.btn-flight .text {
+    position: relative; /* Posicionamiento relativo para efectos */
+    transition: transform 0.8s ease, color 0.5s ease; /* Transición para el texto */
+    z-index: 2; /* Asegura que el texto esté en la parte superior */
+}
+
+.btn-flight .icon {
+    position: relative; /* Posicionamiento relativo para efectos */
+    transition: transform 0.8s ease; /* Transición para el icono */
+    margin-left: 10px; /* Espacio entre texto e icono */
+    z-index: 2; /* Asegura que el icono esté en la parte superior */
+}
+
+.btn-flight::after {
+    content: ''; /* Contenido vacío para el efecto */
+    position: absolute; /* Posición absoluta */
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    top: 0; /* Alineado al top */
+    left: -100%; /* Comienza fuera a la izquierda */
+    background: white; /* Color de fondo para el efecto */
+    z-index: 1; /* Colocado detrás del texto y el icono */
+    transition: left 0.8s ease; /* Transición para el efecto */
+}
+
+.btn-flight:hover::after {
+    left: 0; /* Efecto de desplazamiento a la izquierda al hacer hover */
+}
+
+.btn-flight:hover {
+    background-color: #fff; /* Cambia el fondo a blanco al hacer hover */
+    box-shadow: 0 0 1px 20px rgba(255, 165, 0, .2); /* Sombra de caja */
+}
+
+.btn-flight:hover .text {
+    transform: translateX(-45px); /* Mueve el texto hacia la izquierda */
+    color: var(--orange); /* Cambia el color del texto */
+    font-weight: 600; /* Aumenta el grosor de la fuente */
+}
+
+.btn-flight:hover .icon {
+    transform: translateX(135px); /* Mueve el icono hacia la derecha */
+}
+
+.btn-flight::before {
+    content: ''; /* Contenido vacío para el efecto */
+    position: absolute; /* Posición absoluta */
+    top: 50%; /* Centrando verticalmente */
+    left: 0%; /* Alineado al lado izquierdo */
+    width: 100px; /* Ancho del efecto */
+    height: 100px; /* Alto del efecto */
+    background-color: rgba(255, 165, 0); /* Color del efecto */
+    border-radius: 50%; /* Redondeo para forma de círculo */
+    animation: orbit 1.5s infinite linear; /* Animación circular */
+}
+
+@keyframes orbit {
+    0% {
+        transform: translate(-50%, -50%) scale(0); /* Comienza pequeño */
+        opacity: 1; /* Totalmente visible */
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.5); /* Crece a 1.5 veces */
+        opacity: 0.5; /* Semi-transparente */
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0); /* Vuelve a ser pequeño */
+        opacity: 0; /* Invisible al final */
+    }
+}
+
+/*-------------------FIN BOTON DE INICIO-------------------*/
+
+/*Seccion de servicios-----------*/
+/*-------------------SERVICIOS-------------------*/
+/* Animaciones para botones y secciones */
+.btn-text {
+    background-color: var(--orange);
+    color: #fff;
+    border-radius: 8px;
+    margin-top: 1rem;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-text:hover {
+    background-color: #0056b3;
+    color: #e0f7fa;
+    box-shadow: 0 5px 15px rgba(0, 91, 187, 0.3);
+    transform: translateY(-2px);
+}
+
+
+.ftco-animate {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-in-out;
+}
+
+.ftco-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Efectos de hover para las tarjetas de servicio */
+.services {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.services:hover {
+    transform: translateY(-10px);
+}
+
+.services .icon {
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.services:hover .icon {
+    transform: rotate(360deg);
+}
+
+/* Fondo de la sección de servicios */
+.services-section {
+    background-color: #f8f9fa;
+    padding: 4rem 0;
+}
+
+/* Animación de latencia (ondas) en el botón */
+
+/*fin servicios----------------------------------------------------------en Servicios*/
+// INICIO DE TICKET -------------------- RESERVAS
+/* Diseño de esquinas estilo gamer */
+/* Líneas punteadas alrededor del ticket */
+/* Estilo general del ticket */
+.tour-ticket {
+    position: relative;
+    width: 360px;
+    border: 4px dashed #ff9800;
+    /* Borde punteado para más dinamismo */
+    background: linear-gradient(to bottom right, #fff, #e3f2fd);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    transition: transform 0.3s ease-in-out;
+    animation: bounceIn 1s ease forwards;
+    /* Animación de entrada */
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+    }
+
+    60% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Cinta decorativa superior */
+.ticket-ribbon {
+    position: absolute;
+    top: 30px;
+    left: -50px;
+    background-color: #3f51b5;
+    width: 200px;
+    height: 40px;
+    transform: rotate(-45deg);
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* Contenido principal del ticket */
+.ticket-content {
+    position: relative;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    /* Alineación central */
+}
+
+.ticket-title {
+    font-size: 1.5rem;
+    color: #f57c00;
+    letter-spacing: 1px;
+    animation: pulse 1.5s infinite;
+    /* Pulsación en el título */
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Detalles del ticket */
+.ticket-details {
+    text-align: left;
+    /* Alinear texto a la izquierda para mejor presentación */
+}
+
+.ticket-details p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #424242;
+    /* Color de texto más oscuro */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+    /* Sombra sutil */
+}
+
+.ticket-details strong {
+    color: #3f51b5;
+    /* Color para las etiquetas importantes */
+    text-transform: uppercase;
+    /* Transformación de texto */
+}
+
+.icon {
+    display: inline-block;
+    width: 24px;
+    /* Tamaño de icono */
+    height: 24px;
+    vertical-align: middle;
+    /* Alinear verticalmente con el texto */
+    margin-right: 8px;
+    /* Espacio entre icono y texto */
+}
+
+.icon img {
+    width: 100%;
+    /* Ajustar imagen al contenedor */
+    height: auto;
+}
+
+/* Pie de ticket */
+.ticket-footer {
+    padding: 10px;
+    background-color: #f57c00;
+    color: #fff;
+    border-radius: 0 0 12px 12px;
+    font-size: 0.9rem;
+    animation: fadeIn 2s ease;
+    /* Fade in para el pie */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animación de aviones y confeti */
+.animated-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.airplane {
+    width: 40px;
+    /* Ajustar tamaño del avión */
+    height: 40px;
+    background-image: url('https://img.icons8.com/ios-filled/50/3f51b5/group.png');
+    /* Cambia esta URL por la de tu icono */
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
+.airplane.top-left {
+    top: 10%;
+    left: -20%;
+    /* Ajustar posición inicial */
+    animation: airplaneFly 10s linear infinite;
+}
+
+.airplane.bottom-right {
+    bottom: 10%;
+    right: -20%;
+    /* Ajustar posición inicial */
+    animation: airplaneFlyReverse 10s linear infinite;
+}
+
+@keyframes airplaneFly {
+    0% {
+        transform: translate(0, 0) rotate(0);
+    }
+
+    50% {
+        transform: translate(150%, 150%) rotate(180deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+@keyframes airplaneFlyReverse {
+    0% {
+        transform: translate(0, 0) rotate(0);
+    }
+
+    50% {
+        transform: translate(-150%, -150%) rotate(180deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+/* Animación del confeti */
+.confetti {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background-image: url('https://img.icons8.com/ios-filled/50/3f51b5/group.png');
+    /* Cambia esta URL por una imagen de confeti */
+    background-size: cover;
+    opacity: 0.6;
+    animation: confettiFall 5s ease-in-out infinite;
+    transform: translate(-50%, -50%);
+    /* Centrar confeti */
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translate(-50%, -50%) translateY(0) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) translateY(20px) rotate(180deg);
+    }
+
+    100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) translateY(0) rotate(360deg);
+    }
+}
+
+//FIN TICKET ---------------------- RESERVAS
+
+/*LOGOS DE INICO*/
+.certification-logos {
+    display: flex;
+    bottom: -3rem;
+    right: 20%;
+    gap: 1.5rem;
+    z-index: 4;
+}
+
+.certification-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos responsivos para pantallas de tablet */
+@media (max-width: 1024px) {
+    .certification-logos {
+        bottom: 20px;
+        right: 0;
+        left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .certification-icon {
+        margin: 0 10px;
+    }
+}
+
+/* Estilos para pantallas pequeñas (teléfonos) */
+@media (max-width: 768px) {
+    .certification-logos {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .certification-icon {
+        width: 70px;
+        height: 70px;
+    }
+}
+/*LOGOS DE INICO*/
