@@ -1,0 +1,101 @@
+@use 'base/variables';
+
+.navbar {
+    animation: fadeInDown 1s;
+    position: absolute;
+    width: 100%;
+
+    &-nav {
+        gap: 1rem;
+    }
+
+    .nav-item .show {
+        color: variables.$color-primario !important;
+    }
+}
+
+
+.dropdown-menu {
+    border: none !important;
+    border-radius: 0;
+    padding: 0;
+
+    .dropdown-item {
+        padding: 1rem;
+
+        &:hover {
+            background-color: variables.$color-primario;
+            transition: all 3s ease-out;
+        }
+    }
+}
+
+/* Navbar fijo al hacer scroll */
+.navbar-custom.fixed-top {
+    background-color: rgba(0, 32, 96, 0.9);
+    /* Se mantiene azul oscuro al hacer scroll */
+}
+
+/* Estilo inicial de la navbar (transparente con degradado) */
+.navbar-custom {
+    z-index: 1;
+    // background-color: transparent;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Estilo de la navbar cuando cambia al hacer scroll */
+.navbar-scrolled {
+    background-color: white !important;
+    transition: background-color 0.4s ease;
+}
+
+/* Estilos de las letras y enlaces cuando la navbar es blanca */
+.navbar-scrolled .nav-link {
+    color: black !important;
+}
+
+/* Navbar blanco en dispositivos más pequeños */
+@media (min-width: 992px) {
+    .navbar-custom {
+        background: linear-gradient(to bottom, rgba(0, 32, 96, 0.9), rgba(0, 32, 96, 0) 80%);
+    }
+
+
+}
+
+@media (max-width: 992px) {
+    .navbar-custom {
+        background-color: white !important;
+        color: #000;
+    }
+
+    .navbar-custom .nav-link {
+        color: #000 !important;
+    }
+
+    .navbar-brand img {
+        width: 180px;
+        /* Ajustar el tamaño del logo en dispositivos móviles */
+    }
+
+    i {
+        color: #000;
+    }
+}
+
+/* Logo tamaño predeterminado */
+.navbar-brand img {
+    max-width: 200px;
+    /* Tamaño predeterminado del logo */
+}
+
+/* Color de texto y ajuste de tamaños */
+.navbar-custom .nav-link {
+    color: #fff;
+    font-size: 1.1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-custom .nav-link:hover {
+    color: #ffcc00;
+}

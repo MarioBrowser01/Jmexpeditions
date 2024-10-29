@@ -1,0 +1,19 @@
+@use 'base/variables';
+@use 'base/normalize';
+@use 'base/mixins';
+@use 'base/globals';
+
+@use 'layout/inicio';
+@use 'layout/navegacion';
+
+@use 'secciones/presentacion';
+@use 'secciones/destinos';
+@use 'secciones/test';
+@use 'secciones/testimonios';
+@use 'secciones/ubicacion';
+
+/* Navbar degradado azul oscuro a transparente */
+
+/*---------------------------------------------------------------------------------FIN DE HEADER*/
+/*---------------------------------------------------------------------------------INICIO DE INDEX.PHP*/
+

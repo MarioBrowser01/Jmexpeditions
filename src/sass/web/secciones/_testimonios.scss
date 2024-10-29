@@ -1,0 +1,71 @@
+/*---------------------------------------------------------------------------------SECCION 4 - TESTIMONIOS*/
+@use 'base/variables';
+/* Estilos para la sección de testimonios */
+.testimonials-section {
+    position: relative;
+    height: 100vh; /* Altura de 80vh */
+    overflow: hidden;
+    .container{
+        position: relative;
+        z-index: 2;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+    }
+}
+
+.testimonials-background {
+    background-image: url('../../..//public/images/web/images/destination-4.jpg'); /* Cambia la ruta a tu imagen de fondo */
+    background-size: cover; /* Asegura que la imagen cubra toda la sección */
+    background-position: center; /* Centra la imagen */
+    position: absolute; /* Para que se superponga al contenido */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1; /* Envía la imagen de fondo detrás del contenido */
+}
+
+.testimonials-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Capa de oscuridad */
+    z-index: 2; /* Debe estar por encima del fondo pero debajo del contenido */
+}
+
+.testimonial {
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente para las tarjetas */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 30px; /* Espaciado interno */
+    text-align: center; /* Texto centrado */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    transition: transform 0.3s; /* Animación suave al pasar el mouse */
+}
+
+.testimonial:hover {
+    transform: scale(1.05); /* Escalado al pasar el mouse */
+    h4 {
+        margin-top: 15px; /* Espaciado superior para los nombres */
+        color: #007bff; /* Color para los nombres */
+        font-weight: bold; /* Negrita para los nombres */
+    }
+}
+
+.testimonial-image {
+    margin-bottom: 20px; /* Espacio inferior para las imágenes */
+}
+
+
+.testimonial-image img {
+    outline: solid variables.$color-primario .2rem;
+    width: 80px; /* Ancho fijo para las imágenes */
+    height: 80px; /* Alto fijo para las imágenes */
+    object-fit: cover; /* Recorta la imagen para que se ajuste al contenedor */
+}
