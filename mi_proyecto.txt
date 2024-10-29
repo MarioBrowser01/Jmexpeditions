@@ -1,0 +1,79 @@
+mi_proyecto/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Dashboard/
+│   │   │   │   ├── CategoriaController.php
+│   │   │   │   ├── DestinoController.php
+│   │   │   │   ├── GaleriaController.php
+│   │   │   │   ├── ItinerarioController.php
+│   │   │   │   └── PaqueteController.php
+│   │   │   └── Web/
+│   │   │       ├── HomeController.php
+│   │   │       ├── DestinoController.php
+│   │   │       └── GaleriaController.php
+│   │   ├── Models/
+│   │   │   ├── Categoria.php
+│   │   │   ├── Destino.php
+│   │   │   ├── Galeria.php
+│   │   │   ├── Itinerario.php
+│   │   │   └── Paquete.php
+│   │   └── Views/
+│   │       ├── dashboard/
+│   │       │   ├── categoria/
+│   │       │   ├── destino/
+│   │       │   ├── galeria/
+│   │       │   ├── itinerario/
+│   │       │   └── paquete/
+│   │       └── web/
+│   │           ├── home/
+│   │           ├── destino/
+│   │           └── galeria/
+|
+├───public                     # Carpeta accesible al público (document root)
+│   ├───css                    # Estilos CSS compilados
+│   │   ├───dashboard
+│   │   └───web
+│   ├───images                 # Imágenes públicas
+│   │   ├───destinos
+│   │   └───source
+│   ├───js                     # Archivos JavaScript compilados
+│   │   ├───dashboard
+│   │   └───web
+│   └───uploads                # Archivos subidos por usuarios
+│       ├───gallery
+│       ├───movie
+│       ├───destinos
+│       └───users
+├───resources                  # Recursos y vistas
+│   └───views                  # Vistas principales
+│       ├───dashboard          # Vistas para el dashboard de administración
+│       │   ├───categorias
+│       │   ├───destinos
+│       │   ├───galerias
+│       │   ├───itinerarios
+│       │   ├───paquetes
+│       │   └───videoteca
+│       ├───web                # Vistas para la web pública
+│       │   ├───layouts
+│       │   └───partials
+│       └───templates          # Plantillas compartidas (ej., header, footer)
+├───routes                     # Definición de rutas
+│   ├───dashboard                
+│   └───web              
+│          
+│        	
+├───src                        # Archivos de desarrollo sin compilar
+│   ├───js                     # JavaScript sin compilar
+│   │   ├───dashboard
+│   │   └───web
+│   └───sass                   # Archivos SASS organizados en módulos
+│       ├───dashboard
+│       ├───web
+│       └───variables
+├───database                   # Archivos de base de datos
+│   ├───migrations
+│   └───seeds
+└───storage                    # Archivos generados en ejecución
+    ├───cache
+    └───logs
