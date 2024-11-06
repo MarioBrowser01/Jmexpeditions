@@ -116,10 +116,7 @@ if (isset($_GET['id'])) {
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="dias_destino">Número de Días de Tour</label>
-                                            <input type="number" class="form-control" id="dias_destino" name="dias_destino" value="<?php echo htmlspecialchars($destino['dias_destino']); ?>" required>
-                                        </div>
+                                        
                                         <div class="form-group">
                                             <label for="descripcion_destino">Breve Descripción</label>
                                             <textarea class="form-control" id="descripcion_destino" name="descripcion_destino" rows="3" required><?php echo htmlspecialchars($destino['descripcion_destino']); ?></textarea>

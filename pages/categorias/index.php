@@ -12,7 +12,7 @@ $id_categoria = '';
 $descripcion_categoria = '';
 
 // Verifica si se ha proporcionado un ID en la cadena de consulta
-if (isset($_GET['id_categoria'])) { 
+if (isset($_GET['id_categoria'])) {
     $id_categoria = $_GET['id_categoria'];
 
     // Obtén los datos actuales de la categoría
@@ -68,15 +68,27 @@ if (isset($_GET['id_categoria'])) {
                         <div class="row">
                             <form action="../../app/controller/categorias/create.php" method="post" enctype="multipart/form-data">
                                 <div class="row form-group">
-                                    <div class="col-md-6">
+                                    
+                                    <div id="nombreCategoriaGroup" class="col-md-6">
                                         <label for="nombre_categoria">Nombre de la categoría:</label>
-                                        <input type="text" class="form-control" name="nombre_categoria" id="nombre_categoria" onkeyup="generarCodigoCategoria()" value="<?php echo htmlspecialchars($nombre_categoria); ?>" required>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            name="nombre_categoria"
+                                            id="nombre_categoria"
+                                            onkeyup="verificarNombreEntidad('categorias', 'nombreCategoriaGroup')"
+                                            value="<?php echo htmlspecialchars($nombre_categoria); ?>"
+                                            required>
+                                        <span class="help-block" style="display: none; color: red;">El nombre de la categoría ya existe.</span>
                                     </div>
-                                    <div class="col-md-6">
+
+
+                                    <!-- <div class="col-md-6">
                                         <label for="cod_categoria">Código de la categoría:</label>
                                         <input type="text" class="form-control" id="cod_categoria" name="cod_categoria" readonly><br>
-                                    </div>
-                                    <div class="col-md-12">
+                                    </div> -->
+
+                                    <div class="col-md-6">
                                         <label for="descripcion_categoria">Descripción de la categoría:</label>
                                         <textarea id="descripcion_categoria" name="descripcion_categoria" class="form-control" required><?php echo htmlspecialchars($descripcion_categoria); ?></textarea>
                                     </div>
@@ -105,10 +117,14 @@ if (isset($_GET['id_categoria'])) {
                             <form action="<?php echo $URL; ?>app/controller/categorias/update.php" method="post" enctype="multipart/form-data">
                                 <input type="hidden" id="id_categoria_act" name="id_categoria_act">
                                 <div class="row form-group">
+
                                     <div class="col-md-6">
                                         <label for="nombre_categoria_act">Nombre de la categoría:</label>
                                         <input type="text" class="form-control" id="nombre_categoria_act" name="nombre_categoria_act" required>
                                     </div>
+
+
+
                                     <div class="col-md-6">
                                         <label for="cod_categoria_act">Código de la categoría:</label>
                                         <input type="text" class="form-control" id="cod_categoria_act" name="cod_categoria_act" readonly><br>
@@ -193,10 +209,11 @@ if (isset($_GET['id_categoria'])) {
             </div>
         </div>
     </div>
-    
-    <?php 
-    include '../layouts/modal.php'; 
-    include '../layouts/forms.php'; 
-    include '../layouts/database.php';
-    include '../layouts/footer.php'; 
-    ?>
+</div>
+
+<?php
+include '../layouts/modal.php';
+include '../layouts/forms.php';
+include '../layouts/database.php';
+include '../layouts/footer.php';
+?>

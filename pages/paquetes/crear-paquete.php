@@ -2,7 +2,10 @@
 include '../../app/controller/config.php';
 include '../layouts/header.php';
 include '../../app/controller/paquetes/create.php';
+include '../../app/controller/categorias/listar-categoria.php';
+include '../../app/controller/servicios/listar-servicios.php';
 ?>
+
 <div class="container">
     <div class="page-inner">
         <div class="page-header">
@@ -37,10 +40,11 @@ include '../../app/controller/paquetes/create.php';
                     <div class="card-body">
                         <form action="../../app/controller/paquetes/create.php" method="post">
                             <div class="row">
+
                                 <div class="col-md-6">
                                     <div id="nombreGroup" class="form-group">
                                         <label for="nombre_paquete">Nombre del Paquete</label>
-                                        <input type="text" name="nombre_paquete" onkeyup="verificarNombreEntidad('nombre_paquete', 'nombreGroup')" class="form-control" id="nombre_paquete" required>
+                                        <input type="text" name="nombre_paquete" onkeyup="verificarNombreEntidad('paquetes', 'nombreGroup')" class="form-control" id="nombre_paquete" required>
                                         <small id="nombreError" class="form-text text-muted" style="display:none;">El nombre de paquete ya existe.</small>
                                     </div>
                                     <div id="duracionGroup" class="form-group">
@@ -73,28 +77,120 @@ include '../../app/controller/paquetes/create.php';
                                             <option value="0">No Disponible</option>
                                         </select>
                                     </div>
+
                                     <div class="form-group">
                                         <label for="descripcion_paquete">Descripción del Paquete</label>
                                         <textarea class="form-control" id="descripcion_paquete" name="descripcion_paquete" rows="4" required></textarea>
                                     </div>
                                 </div>
+                                <hr>
+                                <div class="col-md-6">
+                                    <!-- Servicios incluidos -->
+                                    <div class="form-group">
+                                        <label for="servicios_incluidos">Servicios Incluidos</label>
+                                        <div class="selectgroup selectgroup-pills" id="servicios_incluidos_group">
+                                            <?php foreach ($servicios_datos as $servicio): ?>
+                                                <label class="selectgroup-item">
+                                                    <input type="checkbox"
+                                                        name="servicios_incluidos[]"
+                                                        value="<?php echo htmlspecialchars($servicio['nombre_servicio']); ?>"
+                                                        class="selectgroup-input"
+                                                        id="servicio_incluido_<?php echo htmlspecialchars($servicio['id_servicio']); ?>"
+                                                        data-id="<?php echo htmlspecialchars($servicio['id_servicio']); ?>"
+                                                        onclick="toggleService('<?php echo $servicio['id_servicio']; ?>', 'incluidos')">
+                                                    <span class="selectgroup-button"><?php echo htmlspecialchars($servicio['nombre_servicio']); ?></span>
+                                                </label>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <!-- Servicios no incluidos -->
+                                    <div class="form-group">
+                                        <label for="servicios_no_incluidos">Servicios No Incluidos</label>
+                                        <div class="selectgroup selectgroup-pills" id="servicios_no_incluidos_group">
+                                            <?php foreach ($servicios_datos as $servicio): ?>
+                                                <label class="selectgroup-item">
+                                                    <input type="checkbox"
+                                                        name="servicios_no_incluidos[]"
+                                                        value="<?php echo htmlspecialchars($servicio['nombre_servicio']); ?>"
+                                                        class="selectgroup-input"
+                                                        id="servicio_no_incluido_<?php echo htmlspecialchars($servicio['id_servicio']); ?>"
+                                                        data-id="<?php echo htmlspecialchars($servicio['id_servicio']); ?>"
+                                                        onclick="toggleService('<?php echo $servicio['id_servicio']; ?>', 'no_incluidos')">
+                                                    <span class="selectgroup-button"><?php echo htmlspecialchars($servicio['nombre_servicio']); ?></span>
+                                                </label>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+
+                                    <!-- Selector de Categorías -->
+                                    <div class="form-group">
+                                        <label class="form-label">Categorías Seleccionadas (Máximo 5)</label>
+                                        <div class="selectgroup selectgroup-pills" id="categoria-group">
+                                            <?php foreach ($categorias_datos as $categoria): ?>
+                                                <label class="selectgroup-item">
+                                                    <input type="checkbox" name="categorias[]" value="<?php echo htmlspecialchars($categoria['nombre_categoria']); ?>" class="selectgroup-input categoria-selector">
+                                                    <span class="selectgroup-button"><?php echo htmlspecialchars($categoria['nombre_categoria']); ?></span>
+                                                </label>
+                                            <?php endforeach; ?>
+                                        </div>
+                                        <small id="categoriaError" class="form-text text-muted" style="display:none;">Puedes seleccionar un máximo de 5 categorías.</small>
+                                    </div>
+                                </div>
+
+
                             </div>
                             <div class="card-action">
                                 <button type="submit" class="btn btn-success" data-entity="Paquete">Registrar Paquete</button>
-
                                 <button type="reset" class="btn btn-danger">Nuevo</button>
                             </div>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function toggleService(id, type) {
+        const incluidoCheckbox = document.getElementById(`servicio_incluido_${id}`);
+        const noIncluidoCheckbox = document.getElementById(`servicio_no_incluido_${id}`);
+
+        if (type === 'incluidos') {
+            noIncluidoCheckbox.checked = false;
+            noIncluidoCheckbox.parentElement.style.display = incluidoCheckbox.checked ? 'none' : 'inline-block';
+        } else if (type === 'no_incluidos') {
+            incluidoCheckbox.checked = false;
+            incluidoCheckbox.parentElement.style.display = noIncluidoCheckbox.checked ? 'none' : 'inline-block';
+        }
+    }
+
+    // Listar categorias e interactividad
+    document.addEventListener('DOMContentLoaded', () => {
+        const checkboxes = document.querySelectorAll('.categoria-selector');
+        const categoriaError = document.getElementById('categoriaError');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const checkedCheckboxes = document.querySelectorAll('.categoria-selector:checked');
+
+                if (checkedCheckboxes.length > 5) {
+                    checkbox.checked = false; // Desmarca el checkbox que acaba de ser marcado
+                    categoriaError.style.display = 'block'; // Muestra el mensaje de error
+                } else {
+                    categoriaError.style.display = 'none'; // Oculta el mensaje de error si es válido
+                }
+            });
+        });
+    });
+</script>
 
 <script>
-    
-
     function verificarNombreEntidad(entidad, grupo) {
         const nombreEntidad = document.getElementById(entidad).value;
         const nombreGroup = document.getElementById(grupo);
@@ -196,8 +292,9 @@ include '../../app/controller/paquetes/create.php';
     ajustarDuracion();
 </script>
 
+
 <?php
 include '../layouts/modal.php';
-// include '../layouts/forms.php';
+include '../layouts/forms.php';
 include '../layouts/footer.php';
 ?>

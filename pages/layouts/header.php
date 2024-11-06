@@ -53,6 +53,7 @@
 
   <script src="<?php echo $URL; ?>assets/js/core/jquery-3.7.1.min.js"></script>
   <script src="<?php echo $URL; ?>assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+  <script src="<?php echo $URL; ?>assets/js/plugin/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
   <script src="<?php echo $URL; ?>public/js/modal/modal.min.js"></script>
   <script src="<?php echo $URL; ?>public/js/forms/forms.min.js"></script>
 
@@ -257,7 +258,7 @@
               </div>
             </li> -->
             <li class="nav-item">
-              <a href="../categorias/index.php">
+              <a href="<?php echo $URL; ?>pages/categorias/index.php">
                 <i class="fas fa-tags"></i>
                 <p>Categorias</p>
                 <!-- <span class="badge badge-success">4</span> -->

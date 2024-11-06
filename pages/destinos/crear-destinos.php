@@ -128,10 +128,6 @@ include '../../app/controller/destinos/create.php';
                         ?>
                       </select>
                     </div>
-                    <!-- <div class="form-group">
-                      <label for="numero_dias">Número de Días de Tour</label>
-                      <input type="number" class="form-control" id="numero_dias" name="numero_dias" required>
-                    </div> -->
                     <div class="form-group">
                       <label for="altitud_destino">Altitud del Destino (msnm)</label>
                       <input type="number" class="form-control" id="altitud_destino" name="altitud_destino" required>
@@ -199,29 +195,29 @@ include '../../app/controller/destinos/create.php';
   }
 
   //verificar la existencia del destino mediante nombres
-  function verificarNombreDestino() {
-    const nombreDestino = document.getElementById('nombre').value;
-    const nombreGroup = document.getElementById('nombreGroup');
-    const nombreError = document.getElementById('nombreError');
+  // function verificarNombreDestino() {
+  //   const nombreDestino = document.getElementById('nombre').value;
+  //   const nombreGroup = document.getElementById('nombreGroup');
+  //   const nombreError = document.getElementById('nombreError');
 
-    if (nombreDestino.length > 0) {
-      fetch(`../../app/controller/destinos/create.php?nombre=${encodeURIComponent(nombreDestino)}`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.existe) {
-            nombreGroup.classList.add('has-error', 'has-feedback');
-            nombreError.style.display = 'block';
-          } else {
-            nombreGroup.classList.remove('has-error', 'has-feedback');
-            nombreError.style.display = 'none';
-          }
-        })
-        .catch(error => console.error('Error al verificar el nombre del destino:', error));
-    } else {
-      nombreGroup.classList.remove('has-error', 'has-feedback');
-      nombreError.style.display = 'none';
-    }
-  }
+  //   if (nombreDestino.length > 0) {
+  //     fetch(`../../app/controller/destinos/create.php?nombre=${encodeURIComponent(nombreDestino)}`)
+  //       .then(response => response.json())
+  //       .then(data => {
+  //         if (data.existe) {
+  //           nombreGroup.classList.add('has-error', 'has-feedback');
+  //           nombreError.style.display = 'block';
+  //         } else {
+  //           nombreGroup.classList.remove('has-error', 'has-feedback');
+  //           nombreError.style.display = 'none';
+  //         }
+  //       })
+  //       .catch(error => console.error('Error al verificar el nombre del destino:', error));
+  //   } else {
+  //     nombreGroup.classList.remove('has-error', 'has-feedback');
+  //     nombreError.style.display = 'none';
+  //   }
+  // }
 </script>
 
 <?php
