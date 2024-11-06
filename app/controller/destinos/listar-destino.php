@@ -22,14 +22,14 @@ try {
         dep.nombre_departamento as nombre_departamento, 
         de.ubicacion_destino as ubicacion_destino, 
         prov.nombre_provincia as nombre_provincia,
-        de.dias_destino as dias_destino, 
         de.descripcion_destino as descripcion_destino, 
         de.parque_reserva_destino as parque_reserva_destino,
         cat.nombre_categoria as nombre_categoria 
         FROM destinos as de 
         INNER JOIN categorias as cat ON de.id_categoria = cat.id_categoria
         INNER JOIN provincias as prov ON de.id_provincia = prov.id_provincia
-        INNER JOIN departamentos as dep ON prov.id_departamento = dep.id_departamento";
+        INNER JOIN departamentos as dep ON prov.id_departamento = dep.id_departamento
+        INNER JOIN paises as pai ON dep.id_pais = pai.id_pais";
 
     // Preparar y ejecutar la consulta
     $query_destinos = $pdo->prepare($sql_destinos);

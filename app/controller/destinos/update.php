@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_provincia = $_POST['id_provincia']; // Cambiado
     $parque_reserva_destino = $_POST['parque_reserva_destino'];
     $id_categoria = $_POST['id_categoria'];
-    $dias_destino = $_POST['dias_destino'];
     $descripcion_destino = $_POST['descripcion_destino'];
     
     // Ruta para almacenar las imágenes
@@ -45,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         id_provincia = :id_provincia,
         parque_reserva_destino = :parque_reserva_destino,
         id_categoria = :id_categoria,
-        dias_destino = :dias_destino,
         descripcion_destino = :descripcion_destino" . 
         (isset($params[':imagen1_destino']) ? ", imagen1_destino = :imagen1_destino" : "") . 
         (isset($params[':imagen2_destino']) ? ", imagen2_destino = :imagen2_destino" : "") . 
@@ -60,7 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ':id_provincia' => $id_provincia,
         ':parque_reserva_destino' => $parque_reserva_destino,
         ':id_categoria' => $id_categoria,
-        ':dias_destino' => $dias_destino,
         ':descripcion_destino' => $descripcion_destino,
         ':id_destino' => $id_destino
     ]);
