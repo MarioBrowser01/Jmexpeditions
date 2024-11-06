@@ -79,7 +79,7 @@
 }
 
 /*BOTON DE INICIO (VER DESTINOS----------------)*/
-.btn-flight {
+.btn-inicio {
     position: relative;
     background-color: #ffcc00; /* Color de fondo */
     color: #fff; /* Color del texto */
@@ -94,32 +94,32 @@
 }
 
 @media (max-width: 991.98px) {
-    .btn-flight {
+    .btn-inicio {
         font-size: 1rem; /* Tamaño de fuente menor en pantallas pequeñas */
     }
 }
 
 @media (max-width: 767.98px) {
-    .btn-flight {
+    .btn-inicio {
         font-size: 1rem; /* Tamaño de fuente en pantallas más pequeñas */
         margin: auto; /* Centra el botón */
     }
 }
 
-.btn-flight .text {
+.btn-inicio .text {
     position: relative; /* Posicionamiento relativo para efectos */
     transition: transform 0.8s ease, color 0.5s ease; /* Transición para el texto */
     z-index: 2; /* Asegura que el texto esté en la parte superior */
 }
 
-.btn-flight .icon {
+.btn-inicio .icon {
     position: relative; /* Posicionamiento relativo para efectos */
     transition: transform 0.8s ease; /* Transición para el icono */
     margin-left: 10px; /* Espacio entre texto e icono */
     z-index: 2; /* Asegura que el icono esté en la parte superior */
 }
 
-.btn-flight::after {
+.btn-inicio::after {
     content: ''; /* Contenido vacío para el efecto */
     position: absolute; /* Posición absoluta */
     width: 100%; /* Ancho completo */
@@ -131,26 +131,26 @@
     transition: left 0.8s ease; /* Transición para el efecto */
 }
 
-.btn-flight:hover::after {
+.btn-inicio:hover::after {
     left: 0; /* Efecto de desplazamiento a la izquierda al hacer hover */
 }
 
-.btn-flight:hover {
+.btn-inicio:hover {
     background-color: #fff; /* Cambia el fondo a blanco al hacer hover */
     box-shadow: 0 0 1px 20px rgba(255, 165, 0, .2); /* Sombra de caja */
 }
 
-.btn-flight:hover .text {
+.btn-inicio:hover .text {
     transform: translateX(-45px); /* Mueve el texto hacia la izquierda */
     color: var(--orange); /* Cambia el color del texto */
     font-weight: 600; /* Aumenta el grosor de la fuente */
 }
 
-.btn-flight:hover .icon {
+.btn-inicio:hover .icon {
     transform: translateX(135px); /* Mueve el icono hacia la derecha */
 }
 
-.btn-flight::before {
+.btn-inicio::before {
     content: ''; /* Contenido vacío para el efecto */
     position: absolute; /* Posición absoluta */
     top: 50%; /* Centrando verticalmente */

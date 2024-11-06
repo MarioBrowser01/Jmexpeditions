@@ -116,29 +116,78 @@ function generarCodigo() {
 /**FIN CODIGO DE DESTINO */
 
 
-/****Codigo de categorias */
-function generarCodigoCategoria() {
-  var nombre = document.getElementById('nombre_categoria').value.trim();
-  var codigo = 'CA';
+/****Codigo de agregar categorias ------ form paquete*/
+function buscarCategorias() {
+  const input = document.getElementById('categorias').value;
+  const resultados = document.getElementById('resultados-categorias');
 
-  if (nombre) {
-    var palabras = nombre.split(' ');
-    if (palabras.length > 1) {
-      var parte1 = palabras[0].substring(0, 2).toUpperCase();
-      var parte2 = palabras[1].substring(0, 2).toUpperCase();
-      codigo += parte1 + parte2;
-    } else {
-      var parte = nombre.substring(0, 4).toUpperCase();
-      codigo += parte;
-    }
+  if (input.length < 2) {
+      resultados.style.display = 'none';
+      return; // Solo buscar si hay al menos 2 caracteres
   }
 
-  if (codigo.length > 6) {
-    codigo = codigo.substring(0, 6);
-  }
-
-  document.getElementById('cod_categoria').value = codigo;
+  // Realiza la consulta AJAX a tu servidor para buscar categorías
+  fetch(`../../app/controller/categorias/search.php?query=${input}`)
+      .then(response => response.json())
+      .then(data => {
+          // Limpia los resultados anteriores
+          resultados.innerHTML = '';
+          if (data.length > 0) {
+              data.forEach(categoria => {
+                  const item = document.createElement('div');
+                  item.className = 'list-group-item list-group-item-action';
+                  item.textContent = categoria.nombre_categoria;
+                  item.onclick = () => agregarCategoria(categoria);
+                  resultados.appendChild(item);
+              });
+              resultados.style.display = 'block';
+          } else {
+              resultados.style.display = 'none';
+          }
+      })
+      .catch(error => {
+          console.error('Error al buscar categorías:', error);
+      });
 }
+
+function agregarCategoria(categoria) {
+  // Aquí se puede agregar la lógica para agregar la categoría al paquete
+  // Por ejemplo, puedes mostrarla en un campo oculto o en otro elemento de la interfaz
+  console.log('Categoría seleccionada:', categoria.nombre_categoria);
+
+  // Si se desea, se puede cerrar el menú de resultados
+  document.getElementById('resultados-categorias').style.display = 'none';
+
+  // Aquí podrías agregar la categoría a un array y mostrar las seleccionadas en otro lugar
+}
+
+/****Codigo de agregar categorias ----  form paquete */
+
+
+
+/****Codigo de categorias */
+// function generarCodigoCategoria() {
+//   var nombre = document.getElementById('nombre_categoria').value.trim();
+//   var codigo = 'CA';
+
+//   if (nombre) {
+//     var palabras = nombre.split(' ');
+//     if (palabras.length > 1) {
+//       var parte1 = palabras[0].substring(0, 2).toUpperCase();
+//       var parte2 = palabras[1].substring(0, 2).toUpperCase();
+//       codigo += parte1 + parte2;
+//     } else {
+//       var parte = nombre.substring(0, 4).toUpperCase();
+//       codigo += parte;
+//     }
+//   }
+
+//   if (codigo.length > 6) {
+//     codigo = codigo.substring(0, 6);
+//   }
+
+//   document.getElementById('cod_categoria').value = codigo;
+// }
 
 /****FIN Codigo de categorias */
 

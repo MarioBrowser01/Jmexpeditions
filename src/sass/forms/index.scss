@@ -149,3 +149,20 @@ body {
   background: none;
   /* Elimina el fondo en active */
 }
+
+// Agregar categorias a paquete
+#resultados-categorias {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.list-group-item {
+  cursor: pointer;
+}
+
+.list-group-item:hover {
+  background-color: #f1f1f1;
+}
+
