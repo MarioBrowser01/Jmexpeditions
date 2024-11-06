@@ -80,7 +80,7 @@
         <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
     </svg></div>
 
-<script>
+<!-- <script>
     document.getElementById('boton-cambiar-fondo').addEventListener('click', function(event) {
         event.preventDefault();
 
@@ -90,7 +90,7 @@
         // Cambiamos el fondo del div con la clase 'bg-img'
         document.getElementById('fondo-carousel').style.backgroundImage = 'url(' + nuevaImagen + ')';
     });
-</script>
+</script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
@@ -109,6 +109,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="<?php echo $URL; ?>assets/js/landing/google-map.js"></script>
 <script src="<?php echo $URL; ?>assets/js/landing/main.js"></script>
+<script src="<?php echo $URL; ?>public/js/landing/landing.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </body>
 

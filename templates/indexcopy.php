@@ -27,53 +27,26 @@ if (!empty($itinerarios_datos)) {
 	$imagen_aleatoria = $imagenes_destino[array_rand($imagenes_destino)];
 }
 
-
-
 ?>
-<div class="hero-wrap js-fullheight position-relative">
-	<div class="overlay"></div>
-
-	<!-- Video de fondo -->
-	<video id="background-video" class="w-100 h-100 position-absolute" style="object-fit: cover;" autoplay muted loop playsinline>
-		<source src="../public/uploads/movie/movie_flyer.webm" type="video/webm">
-		<source src="../public/uploads/movie/movie_flyer.mp4" type="video/mp4">
-		Your browser does not support the video tag.
-	</video>
-
-	<!-- Contenido sobre el video -->
-	<div class="container position-relative z-index-10">
-		<div class="row no-gutters slider-text js-fullheight align-items-center">
-			<div class="col-md-7 ftco-animate text-light">
-				<h1 class="mb-4 titulo">Bienvenidos a JMEXPEDITIONS</h1>
-				<p class="caps">La agencia de viajes de los expertos</p>
-			</div>
-			<div class="col-md-5 d-flex justify-content-end">
-				<a href="paquetes.php" class="btn-inicio py-3 px-4 text-decoration-none">
-					<span class="icon"><i class="fas fa-plane-departure"></i></span>
-					<span class="text">&ThinSpace; ¡Ver Destinos!</span>
-				</a>
+<?php if (!empty($itinerario_aleatorio)) : ?>
+	<div class="hero-wrap js-fullheight" style="background-image: url('../public/images/destinos/<?php echo $imagen_aleatoria; ?>');">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+				<div class="col-md-7 ftco-animate text-light">
+					<h1 class="mb-4"><?php echo $itinerario_aleatorio['nombre_paquete']; ?></h1>
+					<p class="caps">Explore <?php echo $itinerario_aleatorio['nombre_destino']; ?> and beyond!</p>
+				</div>
+				<div class="col-md-5 text-end">
+					<a href="reservar.php?id=<?php echo $itinerario_aleatorio['id_paquete']; ?>" class="btn btn-warning py-3 px-4">¡Reservar ya!</a>
+				</div>
 			</div>
 		</div>
 	</div>
-
-	<!-- Botón de control de volumen -->
-	<div class="video-controls text-center position-absolute">
-		<button id="mute-btn" class="mute-btn">
-			<i class="fas fa-volume-mute fa-2x"></i>
-		</button>
-	</div>
-
-	<!-- Imágenes redondas en la esquina inferior derecha -->
-	<div class="certification-logos position-absolute">
-		<a href="https://www.ifmga.info/" target="_blank"><img src="../assets/img/layouts/certificate1.jpg" alt="Certificación 1" class="certification-icon mb-3"></a>
-		<a href="https://agmp.pe/agmp/guias-uiagm-peru/" target="_blank"><img src="../assets/img/layouts/certificate2.png" alt="Certificación 2" class="certification-icon mb-3"></a>
-		<!-- <img src="img/img3.jpg" alt="Certificación 3" class="certification-icon"> -->
-	</div>
-</div>
+<?php endif; ?>
 
 
-
-<!-- <section class="ftco-section ftco-no-pb ftco-no-pt mt-2">
+<section class="ftco-section ftco-no-pb ftco-no-pt mt-2">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -150,12 +123,12 @@ if (!empty($itinerarios_datos)) {
 											<div class="col-md d-flex">
 												<div class="form-group d-flex w-100 border-0">
 													<div class="form-field w-100 align-items-center d-flex">
-														<i class="fas fa-globe"></i> 
+														<!-- <i class="fas fa-globe"></i> -->
 														<button type="submit" class="align-self-stretch form-control btn btn-primary">
 															<i class="fas fa-search"></i> &ThinSpace;
 															Explorar
 														</button>
-														<input type="submit" value="Explorar" class="align-self-stretch form-control btn btn-primary"> 
+														<!-- <input type="submit" value="Explorar" class="align-self-stretch form-control btn btn-primary"> -->
 													</div>
 												</div>
 											</div>
@@ -235,28 +208,58 @@ if (!empty($itinerarios_datos)) {
 				</div>
 			</div>
 		</div>
-</section> -->
+</section>
 
 <section class="ftco-section services-section">
 	<div class="container">
 		<div class="row d-flex">
-			<!-- Columna de texto -->
-			<div class="col-md-6 d-flex align-items-center">
-				<div class="heading-section mb-5">
-					<span class="subheading">Bienvenido a JM Expeditions</span>
+			<div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate d-flex align-items-center">
+				<div class="w-100">
+					<span class="subheading">Welcome to JM Expeditions</span>
 					<h2 class="mb-4">¡Es hora de comenzar tu aventura!</h2>
 					<p>
-						Somos una empresa especializada en el sector de viajes, ofreciendo experiencias únicas con guías certificados en alta montaña 🏔️. Explora destinos increíbles con nosotros y empieza tu próxima gran aventura.
+						Somos una empresa especializada en el sector de viajes, ofreciendo experiencias únicas con guías certificados en alta montaña 🏔️. Ofrecemos una amplia gama de servicios, desde expediciones de aventura hasta equipamiento especializado para tus travesías. Nos enfocamos en garantizar seguridad y emociones inolvidables en cada recorrido. Conoce los destinos más espectaculares de la naturaleza y descubre nuevas fronteras junto a nuestros expertos 👣🌄. ¡Tu próxima aventura empieza con nosotros!
 					</p>
-					<a href="#" class="btn btn-primary py-3 px-4 btn-text">Buscar Destinos</a>
+					<a href="#" class="btn btn-primary py-3 px-4">Buscar Destinos</a></p>
 				</div>
 			</div>
-			<!-- Columna de imagen y servicio -->
-			<div class="col-md-6 d-flex align-items-center">
-				<div class="services services-1 d-block img" style="background-image: url(../assets/img/layouts/nosotros.jpg); background-size: cover; background-position: center; width: 100%; min-height: 100%;">
-					<div class="media-body">
-						<h3 class="heading mb-3 b-0">Tour Operator</h3>
-						<!-- <p>A small river named Duden flows by their place and supplies it with the necessary</p> -->
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+						<div class="services services-1 color-1 d-block img" style="background-image: url(images/services-1.jpg);">
+							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-paragliding"></span></div>
+							<div class="media-body">
+								<h3 class="heading mb-3">Actividades</h3>
+								<p>A small river named Duden flows by their place and supplies it with the necessary</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+						<div class="services services-1 color-2 d-block img" style="background-image: url(images/services-2.jpg);">
+							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
+							<div class="media-body">
+								<h3 class="heading mb-3">Travel Arrangements</h3>
+								<p>A small river named Duden flows by their place and supplies it with the necessary</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+						<div class="services services-1 color-3 d-block img" style="background-image: url(images/services-3.jpg);">
+							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-tour-guide"></span></div>
+							<div class="media-body">
+								<h3 class="heading mb-3">Private Guide</h3>
+								<p>A small river named Duden flows by their place and supplies it with the necessary</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+						<div class="services services-1 color-4 d-block img" style="background-image: url(images/services-4.jpg);">
+							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-map"></span></div>
+							<div class="media-body">
+								<h3 class="heading mb-3">Location Manager</h3>
+								<p>A small river named Duden flows by their place and supplies it with the necessary</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -264,11 +267,7 @@ if (!empty($itinerarios_datos)) {
 	</div>
 </section>
 
-
-
-
-
-<!-- <section class="ftco-section img ftco-select-destination" style="background-image: url(images/bg_3.jpg);">
+<section class="ftco-section img ftco-select-destination" style="background-image: url(images/bg_3.jpg);">
 	<div class="container">
 		<div class="row justify-content-center pb-4">
 			<div class="col-md-12 heading-section text-center ftco-animate">
@@ -336,7 +335,7 @@ if (!empty($itinerarios_datos)) {
 			</div>
 		</div>
 	</div>
-</section> -->
+</section>
 
 <section class="ftco-section">
 	<div class="container">
@@ -455,7 +454,23 @@ if (!empty($itinerarios_datos)) {
 </section>
 
 
+<section class="ftco-section ftco-about video-section">
+    <div class="overlay"></div>
+    <div class="video-wrapper">
+        <!-- Video de fondo ocupando todo el ancho y alto de la sección -->
+        <video id="background-video" 
+               src="../public/uploads/movie/Jahuacocha_3_twiter.mp4" 
+               muted loop>
+        </video>
 
+        <!-- Botón para activar/desactivar sonido -->
+        <div class="video-controls text-center">
+            <button class="btn btn-light mute-btn">
+                <i class="fas fa-volume-mute fa-2x"></i>
+            </button>
+        </div>
+    </div>
+</section>
 <!-- <section class="ftco-section ftco-about img">
 	<div class="overlay"></div>
 	<div class="container py-md-5">
@@ -470,7 +485,7 @@ if (!empty($itinerarios_datos)) {
 	</div>
 </section> -->
 
-<!-- <section class="ftco-section ftco-about ftco-no-pt img">
+<section class="ftco-section ftco-about ftco-no-pt img">
 	<div class="container">
 		<div class="row d-flex">
 			<div class="col-md-12 about-intro">
@@ -493,15 +508,15 @@ if (!empty($itinerarios_datos)) {
 			</div>
 		</div>
 	</div>
-</section> -->
+</section>
 
 <section class="ftco-section testimony-section bg-bottom" style="background-image: url(images/bg_1.jpg);">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row justify-content-center pb-4">
 			<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-				<span class="subheading">Testimonios</span>
-				<h2 class="mb-4">Comentarios Turísticos</h2>
+				<span class="subheading">Testimonial</span>
+				<h2 class="mb-4">Tourist Feedback</h2>
 			</div>
 		</div>
 		<div class="row ftco-animate">
@@ -619,9 +634,80 @@ if (!empty($itinerarios_datos)) {
 </section>
 
 
+<section class="ftco-section">
+	<div class="container">
+		<div class="row justify-content-center pb-4">
+			<div class="col-md-12 heading-section text-center ftco-animate">
+				<span class="subheading">Our Blog</span>
+				<h2 class="mb-4">Recent Post</h2>
+			</div>
+		</div>
+		<div class="row d-flex">
+			<div class="col-md-4 d-flex ftco-animate">
+				<div class="blog-entry justify-content-end">
+					<a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
+					</a>
+					<div class="text">
+						<div class="d-flex align-items-center mb-4 topp">
+							<div class="one">
+								<span class="day">11</span>
+							</div>
+							<div class="two">
+								<span class="yr">2020</span>
+								<span class="mos">September</span>
+							</div>
+						</div>
+						<h3 class="heading"><a href="#">Most Popular Place In This World</a></h3>
+						<!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
+						<p><a href="#" class="btn btn-primary">Read more</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 d-flex ftco-animate">
+				<div class="blog-entry justify-content-end">
+					<a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
+					</a>
+					<div class="text">
+						<div class="d-flex align-items-center mb-4 topp">
+							<div class="one">
+								<span class="day">11</span>
+							</div>
+							<div class="two">
+								<span class="yr">2020</span>
+								<span class="mos">September</span>
+							</div>
+						</div>
+						<h3 class="heading"><a href="#">Most Popular Place In This World</a></h3>
+						<!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
+						<p><a href="#" class="btn btn-primary">Read more</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 d-flex ftco-animate">
+				<div class="blog-entry">
+					<a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
+					</a>
+					<div class="text">
+						<div class="d-flex align-items-center mb-4 topp">
+							<div class="one">
+								<span class="day">11</span>
+							</div>
+							<div class="two">
+								<span class="yr">2020</span>
+								<span class="mos">September</span>
+							</div>
+						</div>
+						<h3 class="heading"><a href="#">Most Popular Place In This World</a></h3>
+						<!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
+						<p><a href="#" class="btn btn-primary">Read more</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-
-<!-- <section class="ftco-intro ftco-section ftco-no-pt">
+<section class="ftco-intro ftco-section ftco-no-pt">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-12 text-center">
@@ -634,7 +720,7 @@ if (!empty($itinerarios_datos)) {
 			</div>
 		</div>
 	</div>
-</section> -->
+</section>
 
 <?php
 include 'layouts/footer.php'

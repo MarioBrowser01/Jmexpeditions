@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <section class="ftco-section ftco-no-pb contact-section mb-4">
     <div class="container">
         <div class="row d-flex contact-info">
-            <div class="row">
+            <div class="row  mb-4">
                 <!-- Formulario de Reserva -->
                 <div class="col-md-8 mt-4">
                     <div class="form-section bg-light p-5 rounded shadow-lg position-relative">
@@ -197,8 +197,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     </div>
                 </div>
-
-
                 <!-- Aside: Resumen de reserva en tiempo real -->
                 <div class="col-md-4 mt-4">
                     <div class="reservation-summary bg-light p-4 rounded shadow-lg">
@@ -207,22 +205,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <hr class="my-md-2">
 
 
-                        <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex justify-content-between align-items-center ">
                             <p class="mb-0"><strong>Paquete:</strong></p>
                             <p class="text-right mb-0"><?php echo htmlspecialchars($paquete['nombre_paquete']); ?></p>
                         </div>
 
-                        <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex justify-content-between align-items-center ">
                             <p class="mb-0"><strong>Numero de días:</strong></p>
                             <p class="text-right mb-0"><?php echo htmlspecialchars($paquete['duracion_paquete']); ?></p>
                         </div>
 
-                        <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex justify-content-between align-items-center ">
                             <p class="mb-0"><strong>Personas:</strong></p>
                             <p class="text-right mb-0"><span id="summary-personas">1</span></p>
                         </div>
 
-                        <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex justify-content-between align-items-center ">
                             <p class="mb-0"><strong>Precio por persona:</strong></p>
                             <p class="text-right mb-0"><?php echo number_format($paquete['precio_paquete'], 2); ?> PEN</p>
                         </div>
@@ -239,8 +237,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <!-- FIN DE TICKET -->
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -343,7 +339,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         border-radius: 20px;
         border: none;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-        padding: 15px;
+        padding: 10px;
         font-size: 1.1rem;
     }
 
